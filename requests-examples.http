@@ -7,7 +7,7 @@ POST {{baseUrl}}/products/
 Content-Type: application/json
 
 {
-  "title": "Помидор3",
+  "title": "Пbмидор3",
   "description": "Лучшие помидоры на рынке3"
 }
 
@@ -20,11 +20,11 @@ Content-Type: application/json
 ###
 
 # обновление продукта
-PATCH {{baseUrl}}/products/1/
+PATCH {{baseUrl}}/products/2/
 Content-Type: application/json
 
 {
-  "description": "Самые сочные и ароматные помидорки"
+  "description": "Ну Самые сочные и ароматные помидорки"
 }
 
 ###
@@ -46,10 +46,10 @@ POST {{baseUrl}}/stocks/
 Content-Type: application/json
 
 {
-  "address": "мой адрес не дом и не улица, мой адрес сегодня такой: www.ленинград-спб.ru3",
+  "address": "а6",
   "positions": [
     {
-      "product": 2,
+      "product": 3,
       "quantity": 250,
       "price": 120.50
     },
