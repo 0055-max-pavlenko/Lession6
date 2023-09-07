@@ -46,7 +46,7 @@ POST {{baseUrl}}/stocks/
 Content-Type: application/json
 
 {
-  "address": "а9",
+  "address": "а10",
   "positions": [
     {
       "product": 2,

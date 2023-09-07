@@ -5,7 +5,7 @@ from .models import Product, Stock, StockProduct
 class ProductSerializer(serializers.ModelSerializer):
     class Meta:
         model = Product
-        fields = ['title', 'description']
+        fields = ['id','title', 'description']
 
 
 class ProductPositionSerializer(serializers.ModelSerializer):
@@ -18,7 +18,7 @@ class StockSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Stock
-        fields = ['address', 'products','positions']
+        fields = ['id','address', 'products','positions']
 
     def create(self, validated_data):
         # достаем связанные данные для других таблиц
@@ -30,12 +30,8 @@ class StockSerializer(serializers.ModelSerializer):
         # здесь вам надо заполнить связанные таблицы
         # в нашем случае: таблицу StockProduct
         # с помощью списка positions
-        for position in positions:
-            print(position)
-           # StockProduct.objects.create(stock = position.stock, product = position.product,
-                #quantity = position.quantity, price = position.price)
-            #product = Stock.objects.create(**validated_data)
-            #StockProduct.objects.create(product=product, **position)
+        for p in positions:
+            stock.positions.create(**p)
         
         return stock
     
@@ -49,6 +45,8 @@ class StockSerializer(serializers.ModelSerializer):
        # здесь вам надо обновить связанные таблицы
        # в нашем случае: таблицу StockProduct
        # с помощью списка positions
+       for p in positions:
+           stock.positions.update_or_create(product=p['product'], defaults={**p})
 
        return stock
     
